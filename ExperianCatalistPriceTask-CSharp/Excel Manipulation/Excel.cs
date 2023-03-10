@@ -17,9 +17,6 @@ namespace ExperianCatalistPriceTask_CSharp.Excel_Manipulation
         private static readonly string targetFilepath = "C:\\Portland\\Fuel Trading Company\\Portland - Portland\\Prices\\Pump Prices vs Platts.xlsx";
         // Alternative path: "C:\\Portland\\OneDrive - Fuel Trading Company\\Portland\\Prices\\Pump Prices vs Platts.xlsx"
 
-        // MILES'S TEST PATH!!
-        //private static readonly string targetFilepath = "C:\\Users\\MilesVellozzo\\Desktop\\Pump Prices vs Platts.xlsx";
-
         // Open the workbooks and the specified spreadsheets:
         private static readonly ExcelPackage source = new(sourceFilepath);
         private static readonly ExcelPackage target = new(targetFilepath);

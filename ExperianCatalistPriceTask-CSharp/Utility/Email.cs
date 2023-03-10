@@ -80,7 +80,6 @@ namespace ExperianCatalistPriceTask_CSharp.Utility
             MailMessage message = new();
             SmtpClient smtp = new();
             message.From = new MailAddress(creds.Username);
-            //message.To.Add(new MailAddress("miles@portland-fuel.co.uk"));
             message.To.Add(new MailAddress("it@portland-fuel.co.uk"));
 
             if (error == true) { message.Body = StringBuilderPlusConsole.GetErrorLogString().ToString();
