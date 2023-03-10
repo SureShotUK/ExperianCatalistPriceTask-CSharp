@@ -14,8 +14,11 @@ namespace ExperianCatalistPriceTask_CSharp.Excel_Manipulation
         private static readonly string sourceFilepath = Directory.GetCurrentDirectory() + "\\Experian Catalist Price Averages.xlsx";
 
         // This is the destination/target that the data will be copied to: (WILL NEED TO BE CHANGED TO MATCH HOST PC'S DIRECTORY)
-        //private static readonly string targetFilepath = "C:\\Portland\\OneDrive - Fuel Trading Company\\Portland\\Prices\\Pump Prices vs Platts.xlsx";
         private static readonly string targetFilepath = "C:\\Portland\\Fuel Trading Company\\Portland - Portland\\Prices\\Pump Prices vs Platts.xlsx";
+        // Alternative path: "C:\\Portland\\OneDrive - Fuel Trading Company\\Portland\\Prices\\Pump Prices vs Platts.xlsx"
+
+        // MILES'S TEST PATH!!
+        //private static readonly string targetFilepath = "C:\\Users\\MilesVellozzo\\Desktop\\Pump Prices vs Platts.xlsx";
 
         // Open the workbooks and the specified spreadsheets:
         private static readonly ExcelPackage source = new(sourceFilepath);
@@ -85,9 +88,9 @@ namespace ExperianCatalistPriceTask_CSharp.Excel_Manipulation
         private static void FormatDateCells(string cell)
         {
             DateOnly cellDate = DateOnly.ParseExact(targetWs.Cells[cell].Text, "dd/MM/yyyy");
-            targetWs.Cells[cell].Value = cellDate;
+            string excelDateFunction = $"=DATE({cellDate.Year}, {cellDate.Month}, {cellDate.Day})";
+            targetWs.Cells[cell].Formula = excelDateFunction;
             targetWs.Cells[cell].Style.Numberformat.Format = "dd/MM/yyyy";
-            targetWs.Cells[cell].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
             Console.WriteLine("Formatted cell " + cell + " in target spreadsheet to date format.");
         }
         private static bool DoesDateExistInTarget(string date, int targetRowCount)
